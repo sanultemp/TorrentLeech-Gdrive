@@ -50,7 +50,7 @@ class Progress:
             [
                 [
                     InlineKeyboardButton(
-                        "Cancel 🚫",
+                        "Cancel",
                         callback_data=(
                             f"gUPcancel/{chat_id}/{mes_id}/{from_user}"
                         ).encode("UTF-8"),
@@ -76,20 +76,20 @@ class Progress:
             elapsed_time = TimeFormatter(milliseconds=elapsed_time)
             estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
-            progress = "[{0}{1}] \nP: {2}%\n".format(
+            progress = "[{0}{1}]\n\n💯 PERCENTAGE: {2}%\n".format(
                 "".join(
-                    [FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 5))]
+                    [FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 10))]
                 ),
                 "".join(
                     [
                         UN_FINISHED_PROGRESS_STR
-                        for i in range(20 - math.floor(percentage / 5))
+                        for i in range(10 - math.floor(percentage / 10))
                     ]
                 ),
                 round(percentage, 2),
             )
 
-            tmp = progress + "{0} of {1}\nSpeed: {2}/s\nETA: {3}\n".format(
+            tmp = progress + "✅ DONE: {0}\n💾 SIZE: {1}\n⚡ SPEED: {2}/s\n⏲️ ETA: {3}\n".format(
                 humanbytes(current),
                 humanbytes(total),
                 humanbytes(speed),
