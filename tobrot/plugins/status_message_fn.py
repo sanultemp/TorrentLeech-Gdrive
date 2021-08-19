@@ -44,7 +44,7 @@ async def status_message_f(
 ):  # weird code but 'This is the way' @gautamajay52
     aria_i_p = await aria_start()
     # Show All Downloads
-    to_edit = await message.reply(".......")
+    to_edit = await message.reply("📶 Connecting")
     chat_id = int(message.chat.id)
     mess_id = int(to_edit.message_id)
     async with _lock:
@@ -79,8 +79,8 @@ async def status_message_f(
 
                 msg += f"\n<b>📥 DOWNLOADING 📥</b>"
                 msg += f"\n<code>{downloading_dir_name}</code>"
-                msg += f"\n\n{prog}"
-                msg += f"\n\n💯 PERCENTAGE: {file.progress_string()}"                
+                msg += f"\n{prog}"
+                msg += f"\n💯 PERCENTAGE: {file.progress_string()}"                
                 msg += f"\n💾 FILE SIZE: {file.total_length_string()}"
                 msg += f"\n⏰ ETA: {file.eta_string()}"
                 msg += f"\n⚡️ SPEED: {file.download_speed_string()}" 
@@ -106,7 +106,7 @@ async def status_message_f(
         )
         if msg == "":
             msg = "🤷‍♂️ No Active Torrent"
-            msg = ms_g + "\n\n" + msg
+            msg = ms_g + "\n" + msg
             await to_edit.edit(msg)
             break
         msg = msg + "\n" + ms_g
