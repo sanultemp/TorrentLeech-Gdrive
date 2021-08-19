@@ -85,8 +85,8 @@ MAX_TIME_TO_WAIT_FOR_TORRENTS_TO_START = int(
 )
 MAX_TG_SPLIT_FILE_SIZE = int(os.environ.get("MAX_TG_SPLIT_FILE_SIZE", "1072864000"))
 # add config vars for the display progress
-FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR", "█")
-UN_FINISHED_PROGRESS_STR = os.environ.get("UN_FINISHED_PROGRESS_STR", "░")
+FINISHED_PROGRESS_STR = os.environ.get("FINISHED_PROGRESS_STR", "🟢")
+UN_FINISHED_PROGRESS_STR = os.environ.get("UN_FINISHED_PROGRESS_STR", "🔴")
 # add offensive API
 TG_OFFENSIVE_API = os.environ.get("TG_OFFENSIVE_API", None)
 CUSTOM_FILE_NAME = os.environ.get("CUSTOM_FILE_NAME", "")
@@ -157,4 +157,4 @@ def multi_rclone_init():
 
 multi_rclone_init()
 
-logging.info("😎THE BOT IS BOOTED AND READY TO USE--send /help for more🤖.")
+logging.info("📶 BOT STARTED")
