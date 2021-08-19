@@ -15,6 +15,7 @@ from tobrot import (
     GLEECH_UNZIP_COMMAND,
     GLEECH_ZIP_COMMAND,
     LEECH_COMMAND,
+    STATUS_COMMAND,
     LEECH_UNZIP_COMMAND,
     LEECH_ZIP_COMMAND,
     LOGGER,
@@ -57,7 +58,7 @@ async def incoming_message_f(client, message):
         f"🧲 Leeching for you <a href='tg://user?id={g_id}'>🤕</a>", parse_mode="html"
     )
     # get link from the incoming message
-    i_m_sefg = await message.reply_text("processing...", quote=True)
+    i_m_sefg = await message.reply_text("Processing...", quote=True)
     rep_mess = message.reply_to_message
     is_file = False
     dl_url = ''
@@ -82,7 +83,7 @@ async def incoming_message_f(client, message):
         LOGGER.info(dl_url)
 
     else:
-        await i_m_sefg.edit("👺𝙉𝙤 𝙙𝙤𝙬𝙣𝙡𝙤𝙖𝙙𝙞𝙣𝙜 𝙨𝙤𝙪𝙧𝙘𝙚 𝙥𝙧𝙤𝙫𝙞𝙙𝙚𝙙👺")
+        await i_m_sefg.edit("No downloading source provided 🙄")
         return
     if dl_url is not None:
 
@@ -101,7 +102,7 @@ async def incoming_message_f(client, message):
             aria_i_p = await aria_start()
             # LOGGER.info(aria_i_p)
 
-        await i_m_sefg.edit_text("Added to downloads. Send /status")
+        await i_m_sefg.edit_text(f"Added to downloads. Send <code>/{STATUS_COMMAND}</code>")
         # try to download the "link"
         is_zip = False
         is_cloud = False
@@ -147,10 +148,10 @@ async def incoming_youtube_dl_f(client, message):
     """ /ytdl command """
     current_user_id = message.from_user.id
     credit = await message.reply_text(
-        f"💀 Downloading for you <a href='tg://user?id={current_user_id}'>🤕</a>",
+        f"📥 <a href='tg://user?id={current_user_id}'>Downloading for you</a> 📥",
         parse_mode="html",
     )
-    i_m_sefg = await message.reply_text("processing...", quote=True)
+    i_m_sefg = await message.reply_text("Processing...", quote=True)
     # LOGGER.info(message)
     # extract link from message
     if message.reply_to_message:
@@ -170,7 +171,7 @@ async def incoming_youtube_dl_f(client, message):
         await i_m_sefg.edit("😔 No downloading source provided 🙄")
         return
     if dl_url is not None:
-        await i_m_sefg.edit_text("extracting links")
+        await i_m_sefg.edit_text("Extracting links...")
         # create an unique directory
         user_working_dir = os.path.join(
             DOWNLOAD_LOCATION, str(current_user_id))
@@ -271,7 +272,7 @@ async def rename_tg_file(client, message):
                 return
         except Exception as g_g:
             LOGGER.error(g_g)
-            await message.reply_text("g_g")
+            await message.reply_text("LOL 🤣")
         response = {}
         final_response = await upload_to_tg(
             mess_age, new_name, usr_id, response, client
@@ -286,7 +287,8 @@ async def rename_tg_file(client, message):
                 message_id = final_response[key_f_res_se]
                 channel_id = str(message.chat.id)[4:]
                 private_link = f"https://t.me/c/{channel_id}/{message_id}"
-                message_to_send += "👉 <a href='"
+                message_to_send += f"💽 File Size: {file.total_length_string()}\n"
+                message_to_send += "⚪ <a href='"
                 message_to_send += private_link
                 message_to_send += "'>"
                 message_to_send += local_file_name
@@ -297,7 +299,7 @@ async def rename_tg_file(client, message):
                     f"<a href='tg://user?id={usr_id}'>Your Requested Files</a>\n\n"
                 )
                 message_to_send = mention_req_user + message_to_send
-                message_to_send = message_to_send + "\n\n" + "#uploads"
+                message_to_send = message_to_send + "\n\n" + "#Uploads"
             else:
                 message_to_send = "<i>FAILED</i> to upload files. 😞😞"
             await message.reply_text(
@@ -308,5 +310,5 @@ async def rename_tg_file(client, message):
 
     else:
         await message.reply_text(
-            "😔 Provide new name of the file with extension 😐", quote=True
+            "✏️ Provide new name of the file with extension", quote=True
         )
