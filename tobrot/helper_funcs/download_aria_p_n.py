@@ -270,7 +270,6 @@ async def call_apropriate_function(
                     message_id = final_response[key_f_res_se]
                     channel_id = str(sent_message_to_update_tg_p.chat.id)[4:]
                     private_link = f"https://t.me/c/{channel_id}/{message_id}"
-                    message_to_send += f"💽 File Size: {file.total_length_string()}\n"
                     message_to_send += "⚪ <a href='"
                     message_to_send += private_link
                     message_to_send += "'>"
@@ -282,7 +281,7 @@ async def call_apropriate_function(
                         f"<a href='tg://user?id={user_id}'>Your Requested Files</a>\n\n"
                     )
                     message_to_send = mention_req_user + message_to_send
-                    message_to_send = message_to_send + "\n\n" + "#Uploads"
+                    message_to_send = message_to_send + "\n\n" + f"💽 File Size: {file.total_length_string()}\n#Uploads"
                 else:
                     message_to_send = "<i>FAILED</i> to upload files. 😞😞"
                 await user_message.reply_text(
