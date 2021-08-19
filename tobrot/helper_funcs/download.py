@@ -35,7 +35,7 @@ async def down_load_media_f(client, message):  # to be removed
             except Exception as ge:
                 LOGGER.info(ge)
                 LOGGER.info(
-                    f"Can't extract {os.path.basename(the_real_download_location)}, Uploading the same file"
+                    f"Can't extract {os.path.basename(the_real_download_location)}\nUploading the same file"
                 )
         await upload_to_gdrive(the_real_download_location_g, mess_age, message, user_id)
     else:
@@ -47,7 +47,7 @@ async def down_load_media_f(client, message):  # to be removed
 async def download_tg(client, message):
     user_id = message.from_user.id
 
-    mess_age = await message.reply_text("...", quote=True)
+    mess_age = await message.reply_text("🔄️", quote=True)
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
     rep_mess = message.reply_to_message
@@ -75,7 +75,7 @@ async def download_tg(client, message):
         await asyncio.sleep(2)
         if the_real_download_location:
             await mess_age.edit_text(
-                f"Downloaded to <code>{the_real_download_location}</code> in <u>{ms}</u> seconds"
+                f"Downloaded\n\n<code>{the_real_download_location}</code>\n<u>{ms}</u> seconds"
             )
         else:
             await mess_age.edit_text("😔 Download Cancelled or some error happened")
