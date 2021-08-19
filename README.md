@@ -111,6 +111,10 @@ Optional Configuration Variables | Descripion
 | `YTDL_COMMAND` | custom command for `/ytdl`
 | `GYTDL_COMMAND` | custom command for `/gytdl`
 | `GLEECH_COMMAND` | custom command for `/gleech`
+| `GLEECH_UNZIP_COMMAND` | custom command for `/gleechunzip`
+| `GLEECH_ZIP_COMMAND ` | custom command for `/gleechzip`
+| `LEECH_ZIP_COMMAND` | custom command for `/leechzip`
+| `LEECH_UNZIP_COMMAND ` | custom command for `/leechunzip`
 | `TELEGRAM_LEECH_COMMAND` | custom command for `/tleechzip`
 | `TELEGRAM_LEECH_UNZIP_COMMAND` | custom command for `/tleechunzip`
 | `PYTDL_COMMAND` | custom command for `/pytdl`
