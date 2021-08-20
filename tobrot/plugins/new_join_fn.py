@@ -11,7 +11,7 @@ from tobrot import AUTH_CHANNEL, LOGGER
 async def new_join_f(client, message):
     chat_type = message.chat.type
     if chat_type != "private":
-        await message.reply_text(f"🚫 UNAUTH CHAT 🚫\n\nCURRENT CHAT ID: <code>{message.chat.id}</code>")
+        await message.reply_text(f"🚫 ᴜɴᴀᴜᴛʜ ᴄʜᴀᴛ 🚫\n\nᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ ɪᴅ: <code>{message.chat.id}</code>")
         # leave chat
         await client.leave_chat(chat_id=message.chat.id, delete=True)
     # delete all other messages, except for AUTH_CHANNEL
