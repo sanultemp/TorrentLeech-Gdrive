@@ -112,7 +112,7 @@ class CloneHelper:
             button.append(
                 [
                     pyrogram.InlineKeyboardButton(
-                        text="☁️ CloudUrl ☁️", url=f"{gau_link}"
+                        text="☁️ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ☁️", url=f"{gau_link}"
                     )
                 ]
             )
@@ -126,14 +126,14 @@ class CloneHelper:
                 button.append(
                     [
                         pyrogram.InlineKeyboardButton(
-                            text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}"
+                            text="ℹ️ ɪɴᴅᴇx ᴜʀʟ ℹ️", url=f"{tam_link}"
                         )
                     ]
                 )
             button_markup = pyrogram.InlineKeyboardMarkup(button)
             msg = await self.lsg.edit_text(
-                f"🤖: {_up} cloned successfully in your Cloud <a href='tg://user?id={self.u_id}'>🤒</a>\
-                \n📀 Info: Calculating...",
+                f"ɢᴇᴛᴛɪɴɢ ɪɴғᴏ...\n\n<a href='tg://user?id={self.u_id}'>{self.name}</a>\n\
+                \n📀 ɪɴғᴏ: ᴄᴀʟᴄᴜʟᴀᴛɪɴɢ...",
                 reply_markup=button_markup,
                 parse_mode="html",
             )
@@ -153,14 +153,14 @@ class CloneHelper:
             LOGGER.info(am.decode("utf-8"))
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
             await msg.edit_text(
-                f"🤖: {_up} cloned successfully in your Cloud <a href='tg://user?id={self.u_id}'>🤒</a>\
-                \n📀 Info:\n{g_autam}",
+                f"ᴄʟᴏɴᴇᴅ sᴜᴄᴄᴇsғᴜʟʟʏ\n\n<a href='tg://user?id={self.u_id}'>{self.name}</a>\n\
+                \n📀 ɪɴғᴏ:\n{g_autam}",
                 reply_markup=button_markup,
                 parse_mode="html",
             )
 
     async def gcl(self):
-        self.lsg = await self.mess.reply_text(f"Cloning...you should wait 🤒")
+        self.lsg = await self.mess.reply_text(f"🔄️ ᴄʟᴏɴɪɴɢ...")
         destination = f"{DESTINATION_FOLDER}"
         idd = "{" f"{self.g_id}" "}"
         cmd = [

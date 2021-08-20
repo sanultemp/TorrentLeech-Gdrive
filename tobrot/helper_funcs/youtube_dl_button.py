@@ -34,7 +34,7 @@ async def youtube_dl_call_back(bot, update):
     if current_user_id != current_touched_user_id:
         await bot.answer_callback_query(
             callback_query_id=update.id,
-            text="who are you? 🤪🤔🤔🤔",
+            text="ᴡʜᴏ ᴀʀᴇ ʏᴏᴜ?",
             show_alert=True,
             cache_time=0,
         )
@@ -79,7 +79,7 @@ async def youtube_dl_call_back(bot, update):
     # https://superuser.com/a/994060
     LOGGER.info(custom_file_name)
     #
-    await update.message.edit_caption(caption="trying to download")
+    await update.message.edit_caption(caption="ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...")
 
     tmp_directory_for_each_user = os.path.join(
         DOWNLOAD_LOCATION, str(update.message.message_id)
@@ -156,7 +156,7 @@ async def youtube_dl_call_back(bot, update):
         return False, None
     if t_response:
         dir_contents = len(os.listdir(tmp_directory_for_each_user))
-        await update.message.edit_caption(caption=f"found {dir_contents} files")
+        await update.message.edit_caption(caption=f"🔎 ғᴏᴜɴᴅ {dir_contents} ғɪʟᴇs")
         user_id = update.from_user.id
         #
         LOGGER.info(tmp_directory_for_each_user)
