@@ -97,12 +97,12 @@ async def incoming_message_f(client, message):
             os.makedirs(new_download_location)
         aria_i_p = ''
         if not is_file:
-            await i_m_sefg.edit_text("extracting links")
+            await i_m_sefg.edit_text("ᴇxᴛʀᴀᴄᴛɪɴɢ ʟɪɴᴋ...")
             # start the aria2c daemon
             aria_i_p = await aria_start()
             # LOGGER.info(aria_i_p)
 
-        await i_m_sefg.edit_text(f"ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ\n\nᴜsᴇ<code>/{STATUS_COMMAND}</code> ᴛᴏ sᴇᴇ ᴅᴏᴡɴʟᴏᴀᴅ ᴘʀᴏɢʀᴇss")
+        await i_m_sefg.edit_text(f"ᴀᴅᴅᴇᴅ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ\n\nᴜsᴇ <code>/{STATUS_COMMAND}</code> ᴛᴏ sᴇᴇ ᴅᴏᴡɴʟᴏᴀᴅ ᴘʀᴏɢʀᴇss")
         # try to download the "link"
         is_zip = False
         is_cloud = False
@@ -140,7 +140,7 @@ async def incoming_message_f(client, message):
     else:
         await i_m_sefg.edit_text(
             "ᴡʜᴀᴛ ʏᴏᴜ ᴇɴᴛᴇʀᴇᴅ?\n\n"
-            f"<b>API Error</b>: {cf_name}"
+            f"<b>ᴀᴘɪ ᴇʀʀᴏʀ</b>: {cf_name}"
         )
 
 
@@ -200,7 +200,7 @@ async def incoming_youtube_dl_f(client, message):
     else:
         await i_m_sefg.edit_text(
             "ᴡʜᴀᴛ ʏᴏᴜ ᴇɴᴛᴇʀᴇᴅ?\n\n"
-            f"<b>API Error</b>: {cf_name}"
+            f"<b>ᴀᴘɪ ᴇʀʀᴏʀ</b>: {cf_name}"
         )
 
 
