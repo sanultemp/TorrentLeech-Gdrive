@@ -151,7 +151,7 @@ async def cancel_message_f(client, message):
                 downloads = aria_i_p.get_downloads(gid_list)
             aria_i_p.remove(downloads=downloads, force=True, files=True, clean=True)
             await i_m_s_e_g.edit_text(
-                f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{name}\n({size})</code>\n<a href='tg://user?id={message.from_user.id}'>{message.from_user.first_name}</a>"
+                f"<a href='tg://user?id={message.from_user.id}'>ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ</a>\n\n<code>📄 ɴᴀᴍᴇ: {name}\n💾 sɪᴢᴇ: {size}</code>\n\n👤 ʙʏ :{message.from_user.first_name}</a>"
             )
         except Exception as e:
             await i_m_s_e_g.edit_text("<i>ғᴀɪʟᴇᴅ</i>\n\n" + str(e) + "\n#error")

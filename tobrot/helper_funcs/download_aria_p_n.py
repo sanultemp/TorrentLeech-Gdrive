@@ -311,7 +311,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                             f"Cancelling downloading of {file.name} may be due to slow torrent"
                         )
                         await event.reply(
-                            f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{file.name}</code>\n\n #MetaDataError", quote=True
+                            f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>📄 ɴᴀᴍᴇ: {file.name}</code>\n\n#MetaDataError", quote=True
                         )
                         file.remove(force=True, files=True)
                         return
@@ -325,17 +325,17 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 # await check_progress_for_dl(aria2, gid, event, previous_message)
             else:
                 LOGGER.info(
-                    f"Downloaded Successfully\n\n`{file.name}\n({file.total_length_string()})`"
+                    f"Downloaded Successfully\n\n`📄 ɴᴀᴍᴇ: {file.name}\n💾 sɪᴢᴇ: {file.total_length_string()}`"
                 )
                 # await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
                 if not file.is_metadata:
                     await event.edit(
-                        f"ᴅᴏᴡɴʟᴏᴀᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\n`{file.name}\n({file.total_length_string()})`"
+                        f"ᴅᴏᴡɴʟᴏᴀᴅ sᴜᴄᴄᴇssғᴜʟʟʏ\n\n`📄 ɴᴀᴍᴇ: {file.name}\n💾 sɪᴢᴇ: {file.total_length_string()}`"
                     )
                 return
         except aria2p.client.ClientException:
             await event.reply(
-                f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{file.name}\n({file.total_length_string()})</code>", quote=True
+                f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>📄 ɴᴀᴍᴇ: {file.name}\n💾 sɪᴢᴇ: {file.total_length_string()}</code>", quote=True
             )
             return
         except MessageNotModified as ep:
@@ -350,7 +350,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             LOGGER.info(str(e))
             if "not found" in str(e) or "'file'" in str(e):
                 await event.edit(
-                    f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{file.name}\n({file.total_length_string()})</code>"
+                    f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{file.name}\n💾 sɪᴢᴇ: {file.total_length_string()}</code>"
                 )
                 return
             else:
