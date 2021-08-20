@@ -44,7 +44,7 @@ async def status_message_f(
 ):  # weird code but 'This is the way' @gautamajay52
     aria_i_p = await aria_start()
     # Show All Downloads
-    to_edit = await message.reply("📶 Connecting")
+    to_edit = await message.reply("📶 ᴄᴏɴɴᴇᴄᴛɪɴɢ...")
     chat_id = int(message.chat.id)
     mess_id = int(to_edit.message_id)
     async with _lock:
@@ -77,14 +77,14 @@ async def status_message_f(
                 percentage = int(file.progress_string(0).split('%')[0])
                 prog = "[{0}{1}]".format("".join([FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 10))]),"".join([UN_FINISHED_PROGRESS_STR for i in range(10 - math.floor(percentage / 10))]))
 
-                msg += f"\n<b>📥 DOWNLOADING 📥</b>"
+                msg += f"\n<b>📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ 📥</b>"
                 msg += f"\n<code>{downloading_dir_name}</code>"
                 msg += f"\n{prog}"
-                msg += f"\n💯 PERCENTAGE: {file.progress_string()}"                
-                msg += f"\n💾 FILE SIZE: {file.total_length_string()}"
-                msg += f"\n⏰ ETA: {file.eta_string()}"
-                msg += f"\n⚡️ SPEED: {file.download_speed_string()}" 
-                msg += f"\n🛑 CANCEL: <code>/{CANCEL_COMMAND_G} {file.gid}</code>"
+                msg += f"\n💯 ᴘᴇʀᴄᴇɴᴛᴀɢᴇ: {file.progress_string()}"                
+                msg += f"\n💾 ғɪʟᴇ sɪᴢᴇ: {file.total_length_string()}"
+                msg += f"\n⏰ ᴇᴛᴀ: {file.eta_string()}"
+                msg += f"\n⚡️ sᴘᴇᴇᴅ: {file.download_speed_string()}" 
+                msg += f"\n🛑 ᴄᴀɴᴄᴇʟ: <code>/{CANCEL_COMMAND_G} {file.gid}</code>"
                 msg += f"\n{msgg}\n\n"
 
         hr, mi, se = up_time(time.time() - BOT_START_TIME)
@@ -96,13 +96,13 @@ async def status_message_f(
         free = humanbytes(free)
 
         ms_g = (
-            f"<b>BOT STATS</b>\n" \
-            f"<b>⏰ BOT UPTIME : {hr} : {mi} : {se}</b>\n" \
-            f"<b>💾 DISK SPACE : {total}</b>\n" \
-            f"<b>📀 USED SPACE : {used}</b>\n" \
-            f"<b>💿 FREE SPACE : {free}</b>\n" \
-            f"<b>🖥️ CPU : {cpu}%</b>\n" \
-            f"<b>📊 RAM : {ram}%</b>\n"
+            f"<b>ʙᴏᴛ sᴛᴀᴛs</b>\n" \
+            f"<b>⏰ ʙᴏᴛ ᴜᴘᴛɪᴍᴇ : {hr} : {mi} : {se}</b>\n" \
+            f"<b>💾 ᴅɪsᴋ sᴘᴀᴄᴇ : {total}</b>\n" \
+            f"<b>📀 ᴜsᴇᴅ sᴘᴀᴄᴇ : {used}</b>\n" \
+            f"<b>💿 ғʀᴇᴇ sᴘᴀᴄᴇ : {free}</b>\n" \
+            f"<b>🖥️ ᴄᴘᴜ : {cpu}%</b>\n" \
+            f"<b>📊 ʀᴀᴍ : {ram}%</b>\n"
         )
         if msg == "":
             msg = "🤷‍♂️ No Active Torrent"
@@ -137,7 +137,7 @@ async def status_message_f(
 async def cancel_message_f(client, message):
     if len(message.command) > 1:
         # /cancel command
-        i_m_s_e_g = await message.reply_text("Checking..", quote=True)
+        i_m_s_e_g = await message.reply_text("ᴄʜᴇᴄᴋɪɴɢ...", quote=True)
         aria_i_p = await aria_start()
         g_id = message.command[1].strip()
         LOGGER.info(g_id)
@@ -151,10 +151,10 @@ async def cancel_message_f(client, message):
                 downloads = aria_i_p.get_downloads(gid_list)
             aria_i_p.remove(downloads=downloads, force=True, files=True, clean=True)
             await i_m_s_e_g.edit_text(
-                f"Download cancelled\n\n<code>{name} ({size})</code>\n<a href='tg://user?id={message.from_user.id}'>{message.from_user.first_name}</a>"
+                f"ᴅᴏᴡɴʟᴏᴀᴅ ᴄᴀɴᴄᴇʟʟᴇᴅ\n\n<code>{name}\n({size})</code>\n<a href='tg://user?id={message.from_user.id}'>{message.from_user.first_name}</a>"
             )
         except Exception as e:
-            await i_m_s_e_g.edit_text("<i>FAILED</i>\n\n" + str(e) + "\n#error")
+            await i_m_s_e_g.edit_text("<i>ғᴀɪʟᴇᴅ</i>\n\n" + str(e) + "\n#error")
     else:
         await message.delete()
 
@@ -201,7 +201,7 @@ async def exec_message_f(client, message):
 
 
 async def upload_document_f(client, message):
-    imsegd = await message.reply_text("Processing ...")
+    imsegd = await message.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
     if message.from_user.id in AUTH_CHANNEL:
         if " " in message.text:
             recvd_command, local_file_name = message.text.split(" ", 1)
@@ -214,7 +214,7 @@ async def upload_document_f(client, message):
 
 async def eval_message_f(client, message):
     if message.from_user.id in AUTH_CHANNEL:
-        status_message = await message.reply_text("Processing ...")
+        status_message = await message.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
         cmd = message.text.split(" ", maxsplit=1)[1]
 
         reply_to_id = message.message_id
@@ -289,9 +289,9 @@ async def upload_log_file(client, message):
 
 async def upload_as_doc(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,True)
-    await message.reply_text("**Set All Your Files\n\nUploaded As Document**\n\n#Documents")
+    await message.reply_text("**sᴇᴛ ᴀʟʟ ʏᴏᴜʀ ғɪʟᴇ\n\nᴜᴘʟᴏᴀᴅᴇᴅ ᴀs ᴅᴏᴄᴜᴍᴇɴᴛ**\n\n#Documents")
 
 
 async def upload_as_video(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,False)
-    await message.reply_text("**Set All Your Files\n\nUploaded As Streamable**\n\n#Video")
+    await message.reply_text("**sᴇᴛ ᴀʟʟ ʏᴏᴜʀ ғɪʟᴇ\n\nᴜᴘʟᴏᴀᴅᴇᴅ ᴀs sᴛʀᴇᴀᴍʙʟᴇ**\n\n#Video")
