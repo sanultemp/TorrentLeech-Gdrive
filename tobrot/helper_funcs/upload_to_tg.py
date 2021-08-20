@@ -74,7 +74,7 @@ async def upload_to_tg(
         new_m_esg = message
         if not message.photo:
             new_m_esg = await message.reply_text(
-                f"<a href='tg://user?id={from_user}'>🔎 Found: {len(directory_contents)}</a>",
+                f"<a href='tg://user?id={from_user}'>🔎 ғᴏᴜɴᴅ: {len(directory_contents)}</a>",
                 quote=True
                 # reply_to_message_id=message.message_id
             )
@@ -94,9 +94,9 @@ async def upload_to_tg(
             LOGGER.info("TODO")
             d_f_s = humanbytes(os.path.getsize(local_file_name))
             i_m_s_g = await message.reply_text(
-                "Telegram Max Size 2GB\n"
-                f"💾 Detected File Size: {d_f_s}\n"
-                "\n🔀 Trying to split the files"
+                "ᴛᴇʟᴇɢʀᴀᴍ ᴍᴀx sɪᴢᴇ 𝟸ɢʙ\n"
+                f"💾 ᴅᴇᴛᴇᴄᴛᴇᴅ ғɪʟᴇ sɪᴢᴇ: {d_f_s}\n"
+                "\n🔀 ᴛʀʏɪɴɢ ᴛᴏ sᴘʟɪᴛ ғɪʟᴇs"
             )
             splitted_dir = await split_large_files(local_file_name)
             totlaa_sleif = os.listdir(splitted_dir)
@@ -105,9 +105,9 @@ async def upload_to_tg(
             LOGGER.info(totlaa_sleif)
             ba_se_file_name = os.path.basename(local_file_name)
             await i_m_s_g.edit_text(
-                f"💾 Detected File Size: {d_f_s}\n"
-                f"📄 Name: <code>{ba_se_file_name}</code>\n🔀 Splitted into {number_of_files} files.\n"
-                "Trying To Upload To Telegram..."
+                f"💾 ᴅᴇᴛᴇᴄᴛᴇᴅ ғɪʟᴇ sɪᴢᴇ: {d_f_s}\n"
+                f"📄 ɴᴀᴍᴇ: <code>{ba_se_file_name}</code>\n🔀 sᴘʟɪᴛᴛᴇᴅ ɪɴᴛᴏ {number_of_files} ғɪʟᴇs\n\n"
+                "ᴜᴘʟᴏᴀᴅɪɴɢ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴍ..."
             )
             for le_file in totlaa_sleif:
                 # recursion: will this FAIL somewhere?
@@ -147,7 +147,7 @@ async def upload_to_tg(
 async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
     del_it = await message.edit_text(
-        f"<a href='tg://user?id={g_id}'>🔊</a> Now Uploading to ☁️ Cloud!!!"
+        f"<a href='tg://user?id={g_id}'>ᴜᴘʟᴏᴀᴅɪɴɢ ᴛᴏ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ...</a>"
     )
     if not os.path.exists("rclone.conf"):
         with open("rclone.conf", "w+", newline="\n", encoding="utf-8") as fole:
@@ -205,7 +205,7 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         button = []
         button.append(
             [pyrogram.InlineKeyboardButton(
-                text="☁️ CloudUrl ☁️", url=f"{gauti}")]
+                text="☁️ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ☁️", url=f"{gauti}")]
         )
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{os.path.basename(file_upload)}"
@@ -214,14 +214,14 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
             button.append(
                 [
                     pyrogram.InlineKeyboardButton(
-                        text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}"
+                        text="ℹ️ ɪɴᴅᴇx ᴜʀʟ ℹ️", url=f"{tam_link}"
                     )
                 ]
             )
         button_markup = pyrogram.InlineKeyboardMarkup(button)
 
         await messa_ge.reply_text(
-            f"🤖: Uploaded successfully\n<a href='tg://user?id={g_id}'>📄{os.path.basename(file_upload)}</a>\n📀 Size: {gjay}",
+            f"ᴜᴘʟᴏᴀᴅᴇᴅ sᴜᴄᴇssғᴜʟʟʏ\n📄 ɴᴀᴍᴇ: <a href='tg://user?id={g_id}'>{os.path.basename(file_upload)}</a>\n📀 ғɪʟᴇ sɪᴢᴇ: {gjay}",
             reply_markup=button_markup,
         )
         os.remove(file_upload)
@@ -274,7 +274,7 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         button = []
         button.append(
             [pyrogram.InlineKeyboardButton(
-                text="☁️ CloudUrl ☁️", url=f"{gautii}")]
+                text="☁️ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ☁️", url=f"{gautii}")]
         )
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{os.path.basename(file_upload)}/"
@@ -283,14 +283,14 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
             button.append(
                 [
                     pyrogram.InlineKeyboardButton(
-                        text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}"
+                        text="ℹ️ ɪɴᴅᴇx ᴜʀʟ ℹ️", url=f"{tam_link}"
                     )
                 ]
             )
         button_markup = pyrogram.InlineKeyboardMarkup(button)
 
         await messa_ge.reply_text(
-            f"Uploaded successfully\n\nNAME :<a href='tg://user?id={g_id}'>{os.path.basename(file_upload)}</a>\n📀 SIZE: {gjay}",
+            f"ᴜᴘʟᴏᴀᴅᴇᴅ sᴜᴄᴇssғᴜʟʟʏ\n\nɴᴀᴍᴇ: <a href='tg://user?id={g_id}'>{os.path.basename(file_upload)}</a>\n📀 ғɪʟᴇ sɪᴢᴇ: {gjay}",
             reply_markup=button_markup,
         )
         shutil.rmtree(file_upload)
@@ -340,7 +340,7 @@ async def upload_single_file(
         message_for_progress_display = message
         if not edit_media:
             message_for_progress_display = await message.reply_text(
-                "Starting Upload\n\n{}".format(
+                "sᴛᴀʀᴛɪɴɢ ᴜᴘʟᴏᴀᴅ\n\n{}".format(
                     os.path.basename(local_file_name))
             )
         prog = Progress(from_user, client, message_for_progress_display)
@@ -371,7 +371,7 @@ async def upload_single_file(
             message_for_progress_display = message
             if not edit_media:
                 message_for_progress_display = await message.reply_text(
-                    "Starting Upload\n\n{}".format(
+                    "sᴛᴀʀᴛɪɴɢ ᴜᴘʟᴏᴀᴅ\n\n{}".format(
                         os.path.basename(local_file_name))
                 )
                 prog = Progress(from_user, client,
@@ -564,7 +564,7 @@ async def upload_single_file(
             time.sleep(g.x)
         except Exception as e:
             LOGGER.info(e)
-            await message_for_progress_display.edit_text("**FAILED**\n" + str(e))
+            await message_for_progress_display.edit_text("**ғᴀɪʟᴇᴅ**\n\n" + str(e))
         else:
             if message.message_id != message_for_progress_display.message_id:
                 try:
